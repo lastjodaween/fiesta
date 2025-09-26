@@ -7,39 +7,80 @@
 <style>
   body {
     font-family: 'Luckiest Guy', cursive;
-    background: linear-gradient(135deg, #ff66cc, #6600ff);
+    background: radial-gradient(circle at top, #330066, #6600ff, #ff66cc);
     color: #fff;
     text-align: center;
-    padding: 50px;
+    padding: 50px 20px;
     overflow-x: hidden;
     position: relative;
   }
 
-  h1 { font-size: 3em; margin-bottom: 30px; text-shadow: 3px 3px #000; }
-
-  .contador {
-    background: rgba(0,0,0,0.3);
-    display: inline-block;
-    padding: 20px 50px;
-    border-radius: 25px;
-    margin: 20px;
+  h1 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    text-shadow: 3px 3px #000;
+    animation: titleBounce 2s infinite alternate;
   }
 
-  .numero { font-size: 3em; color: #ffcc00; transition: all 0.5s ease; }
+  @keyframes titleBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05) rotate(-2deg); }
+    100% { transform: scale(1) rotate(2deg); }
+  }
 
-  #faltan { font-size: 2em; color: #ff4444; }
+  .contador {
+    background: rgba(0,0,0,0.4);
+    display: inline-block;
+    padding: 30px 60px;
+    border-radius: 30px;
+    margin: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+  }
 
+  .contador:hover {
+    transform: scale(1.1);
+  }
+
+  .numero {
+    font-size: 3em;
+    color: #ffcc00;
+    transition: all 0.5s ease;
+  }
+
+  #faltan {
+    font-size: 2em;
+    color: #ff4444;
+  }
+
+  /* Confeti */
   .confeti {
     position: absolute;
     width: 10px; height: 10px;
     top: -10px; opacity: 0.9;
     pointer-events: none;
     animation: caer linear forwards;
+    border-radius: 50%;
   }
 
   @keyframes caer {
-    0% {transform: translateY(0) rotate(0deg);}
-    100% {transform: translateY(100vh) rotate(360deg);}
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+  }
+
+  /* Murciélagos flotando */
+  .murcielago {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('https://i.ibb.co/WxWZp4q/bat.png') no-repeat center/contain;
+    animation: volar linear infinite;
+  }
+
+  @keyframes volar {
+    0% { transform: translateX(-10%) translateY(0) rotate(0deg); }
+    50% { transform: translateX(110%) translateY(-20px) rotate(10deg); }
+    100% { transform: translateX(-10%) translateY(0) rotate(0deg); }
   }
 </style>
 </head>
@@ -70,6 +111,16 @@ function crearConfeti() {
   confeti.style.animationDuration = (Math.random()*2 + 3) + 's';
   document.body.appendChild(confeti);
   setTimeout(() => confeti.remove(), 5000);
+}
+
+// Murciélagos aleatorios
+function crearMurcielago() {
+  const bat = document.createElement('div');
+  bat.className = 'murcielago';
+  bat.style.top = Math.random() * window.innerHeight * 0.5 + 'px';
+  bat.style.animationDuration = (Math.random() * 10 + 5) + 's';
+  document.body.appendChild(bat);
+  setTimeout(() => bat.remove(), 15000);
 }
 
 // Contador de participantes
@@ -105,6 +156,8 @@ function actualizarCountdown() {
   document.getElementById('faltan').innerText = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
 }
 
+// Crear murciélagos aleatorios cada 3 segundos
+setInterval(crearMurcielago, 3000);
 setInterval(actualizarCountdown, 1000);
 setInterval(actualizarParticipantes, 5000);
 actualizarParticipantes();
