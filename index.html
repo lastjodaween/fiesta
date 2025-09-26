@@ -1,130 +1,115 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2818
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>🎃 Jodaween - Fiesta de disfraces 🎃</title>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Luckiest Guy', cursive;
+    background: linear-gradient(135deg, #ff66cc, #6600ff);
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+    overflow-x: hidden;
+    position: relative;
+  }
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="es">\
-<head>\
-<meta charset="UTF-8">\
-<title>
-\f1 \uc0\u55356 \u57219 
-\f0  Jodaween - Fiesta de disfraces 
-\f1 \uc0\u55356 \u57219 
-\f0 </title>\
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">\
-<style>\
-  body \{\
-    font-family: 'Luckiest Guy', cursive;\
-    background: linear-gradient(135deg, #ff66cc, #6600ff);\
-    color: #fff;\
-    text-align: center;\
-    padding: 50px;\
-    overflow-x: hidden;\
-    position: relative;\
-  \}\
-\
-  h1 \{ font-size: 3em; margin-bottom: 30px; text-shadow: 3px 3px #000; \}\
-\
-  .contador \{\
-    background: rgba(0,0,0,0.3);\
-    display: inline-block;\
-    padding: 20px 50px;\
-    border-radius: 25px;\
-    margin: 20px;\
-  \}\
-\
-  .numero \{ font-size: 3em; color: #ffcc00; transition: all 0.5s ease; \}\
-\
-  #faltan \{ font-size: 2em; color: #ff4444; \}\
-\
-  .confeti \{\
-    position: absolute;\
-    width: 10px; height: 10px;\
-    top: -10px; opacity: 0.9;\
-    pointer-events: none;\
-    animation: caer linear forwards;\
-  \}\
-\
-  @keyframes caer \{\
-    0% \{transform: translateY(0) rotate(0deg);\}\
-    100% \{transform: translateY(100vh) rotate(360deg);\}\
-  \}\
-</style>\
-</head>\
-<body>\
-\
-<h1>
-\f1 \uc0\u55356 \u57219 
-\f0  Jodaween - Fiesta de disfraces 
-\f1 \uc0\u55356 \u57219 
-\f0 </h1>\
-\
-<div class="contador">\
-  <h2>Participantes:</h2>\
-  <div id="participantes" class="numero">0</div>\
-</div>\
-\
-<div class="contador">\
-  <h2>Faltan:</h2>\
-  <div id="faltan"></div>\
-</div>\
-\
-<script>\
-const urlScript = "https://script.google.com/macros/s/AKfycby2hXWedcbv0d1Lds0JIefrtP0P702KM4XePP_0eK6fTYZRf-qasSKLjzgoMMFfXkUs/exec";\
-\
-// Confeti\
-function crearConfeti() \{\
-  const confeti = document.createElement('div');\
-  confeti.className = 'confeti';\
-  confeti.style.left = Math.random() * window.innerWidth + 'px';\
-  confeti.style.backgroundColor = `hsl($\{Math.random()*360\}, 100%, 50%)`;\
-  confeti.style.width = confeti.style.height = Math.random()*12 + 8 + 'px';\
-  confeti.style.animationDuration = (Math.random()*2 + 3) + 's';\
-  document.body.appendChild(confeti);\
-  setTimeout(() => confeti.remove(), 5000);\
-\}\
-\
-// Contador de participantes\
-let ultimoParticipantes = 0;\
-async function actualizarParticipantes() \{\
-  try \{\
-    const respuesta = await fetch(urlScript);\
-    const datos = await respuesta.json();\
-    const participantes = datos.participantes || 0;\
-    document.getElementById('participantes').innerText = participantes;\
-\
-    if(participantes > ultimoParticipantes)\{\
-      for(let i=0;i<participantes-ultimoParticipantes;i++) crearConfeti();\
-    \}\
-    ultimoParticipantes = participantes;\
-\
-  \} catch(e) \{ console.log("Error al leer participantes:", e); \}\
-\}\
-\
-// Contador regresivo\
-const fechaFiesta = new Date('2025-10-01T00:00:00');\
-function actualizarCountdown() \{\
-  const ahora = new Date();\
-  const diff = fechaFiesta - ahora;\
-  if(diff <= 0)\{\
-    document.getElementById('faltan').innerText = "\'a1La fiesta comenz\'f3!";\
-    return;\
-  \}\
-  const dias = Math.floor(diff / (1000*60*60*24));\
-  const horas = Math.floor((diff / (1000*60*60)) % 24);\
-  const minutos = Math.floor((diff / (1000*60)) % 60);\
-  const segundos = Math.floor((diff / 1000) % 60);\
-  document.getElementById('faltan').innerText = `$\{dias\}d $\{horas\}h $\{minutos\}m $\{segundos\}s`;\
-\}\
-\
-setInterval(actualizarCountdown, 1000);\
-setInterval(actualizarParticipantes, 5000);\
-actualizarParticipantes();\
-actualizarCountdown();\
-</script>\
-\
-</body>\
-</html>}
+  h1 { font-size: 3em; margin-bottom: 30px; text-shadow: 3px 3px #000; }
+
+  .contador {
+    background: rgba(0,0,0,0.3);
+    display: inline-block;
+    padding: 20px 50px;
+    border-radius: 25px;
+    margin: 20px;
+  }
+
+  .numero { font-size: 3em; color: #ffcc00; transition: all 0.5s ease; }
+
+  #faltan { font-size: 2em; color: #ff4444; }
+
+  .confeti {
+    position: absolute;
+    width: 10px; height: 10px;
+    top: -10px; opacity: 0.9;
+    pointer-events: none;
+    animation: caer linear forwards;
+  }
+
+  @keyframes caer {
+    0% {transform: translateY(0) rotate(0deg);}
+    100% {transform: translateY(100vh) rotate(360deg);}
+  }
+</style>
+</head>
+<body>
+
+<h1>🎃 Jodaween - Fiesta de disfraces 🎃</h1>
+
+<div class="contador">
+  <h2>Participantes:</h2>
+  <div id="participantes" class="numero">0</div>
+</div>
+
+<div class="contador">
+  <h2>Faltan:</h2>
+  <div id="faltan"></div>
+</div>
+
+<script>
+const urlScript = "https://script.google.com/macros/s/AKfycby2hXWedcbv0d1Lds0JIefrtP0P702KM4XePP_0eK6fTYZRf-qasSKLjzgoMMFfXkUs/exec";
+
+// Confeti
+function crearConfeti() {
+  const confeti = document.createElement('div');
+  confeti.className = 'confeti';
+  confeti.style.left = Math.random() * window.innerWidth + 'px';
+  confeti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+  confeti.style.width = confeti.style.height = Math.random()*12 + 8 + 'px';
+  confeti.style.animationDuration = (Math.random()*2 + 3) + 's';
+  document.body.appendChild(confeti);
+  setTimeout(() => confeti.remove(), 5000);
+}
+
+// Contador de participantes
+let ultimoParticipantes = 0;
+async function actualizarParticipantes() {
+  try {
+    const respuesta = await fetch(urlScript);
+    const datos = await respuesta.json();
+    const participantes = datos.participantes || 0;
+    document.getElementById('participantes').innerText = participantes;
+
+    if(participantes > ultimoParticipantes){
+      for(let i=0;i<participantes-ultimoParticipantes;i++) crearConfeti();
+    }
+    ultimoParticipantes = participantes;
+
+  } catch(e) { console.log("Error al leer participantes:", e); }
+}
+
+// Contador regresivo
+const fechaFiesta = new Date('2025-10-01T00:00:00');
+function actualizarCountdown() {
+  const ahora = new Date();
+  const diff = fechaFiesta - ahora;
+  if(diff <= 0){
+    document.getElementById('faltan').innerText = "¡La fiesta comenzó!";
+    return;
+  }
+  const dias = Math.floor(diff / (1000*60*60*24));
+  const horas = Math.floor((diff / (1000*60*60)) % 24);
+  const minutos = Math.floor((diff / (1000*60)) % 60);
+  const segundos = Math.floor((diff / 1000) % 60);
+  document.getElementById('faltan').innerText = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+}
+
+setInterval(actualizarCountdown, 1000);
+setInterval(actualizarParticipantes, 5000);
+actualizarParticipantes();
+actualizarCountdown();
+</script>
+
+</body>
+</html>
