@@ -3,212 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Last Jodaween – Fiesta de disfraces</title>
+  <title>The Last Jodaween</title>
   <style>
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #fff;
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
     }
-
-    body {
-      background-color: #121212;
-      color: #f1f1f1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-
     header {
       text-align: center;
-      margin-bottom: 30px;
+      padding: 30px 10px 10px 10px;
+      background: #1b1b1b;
     }
-
     header img {
-      max-width: 150px;
+      max-height: 100px;
       margin-bottom: 10px;
     }
-
     header h1 {
       font-size: 2.5rem;
-      margin-bottom: 5px;
-      color: #ff9800;
+      margin: 5px 0;
+      color: #f9a825;
     }
-
     header h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: #f1f1f1;
+      font-size: 1rem;
+      margin: 0;
+      color: #e0e0e0;
     }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      width: 100%;
-      max-width: 1200px;
-    }
-
-    .counter-box {
-      flex: 1;
-      min-width: 280px;
-      background-color: #1e1e1e;
-      border-radius: 15px;
-      padding: 20px;
+    .countdown-container {
       text-align: center;
+      padding: 30px 10px;
     }
-
-    .counter-box h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: #ff9800;
-    }
-
-    .counter-box span {
+    .countdown {
       font-size: 2rem;
       font-weight: bold;
+      color: #f9a825;
+      margin-bottom: 15px;
     }
-
-    .image-box {
-      flex: 1;
-      min-width: 280px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .participants {
+      font-size: 1.3rem;
+      color: #e0e0e0;
+      margin-bottom: 20px;
     }
-
-    .image-box img {
-      max-width: 100%;
-      border-radius: 15px;
-    }
-
-    .description {
+    .description-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      margin-top: 40px;
-      width: 100%;
-      max-width: 1200px;
-    }
-
-    .description-text {
-      flex: 2;
-      min-width: 280px;
-      background-color: #1e1e1e;
-      padding: 20px;
-      border-radius: 15px;
-      line-height: 1.6;
-    }
-
-    .description-text h3 {
-      color: #ff9800;
-      margin-bottom: 10px;
-    }
-
-    .description-image {
-      flex: 1;
-      min-width: 280px;
-      display: flex;
-      justify-content: center;
       align-items: center;
+      padding: 20px;
+      gap: 20px;
     }
-
-    .description-image img {
+    .description-text {
+      flex: 1 1 300px;
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+      text-align: justify;
+    }
+    .description-img {
+      flex: 1 1 300px;
+    }
+    .description-img img {
       max-width: 100%;
-      border-radius: 15px;
+      border-radius: 10px;
     }
-
     footer {
-      margin-top: 50px;
       text-align: center;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
-    footer span {
-      color: #ff9800;
+      padding: 20px;
+      background: #1b1b1b;
+      font-size: 1rem;
+      color: #e0e0e0;
     }
   </style>
 </head>
 <body>
   <header>
-    <!-- Sube tu logo como logo.png en la misma carpeta -->
     <img src="logo.png" alt="Logo Jodaween">
     <h1>The Last Jodaween</h1>
     <h2>Fiesta de disfraces</h2>
   </header>
 
-  <div class="container">
-    <div class="counter-box">
-      <h3>Faltan</h3>
-      <span id="dias"></span> días
-    </div>
-    <div class="counter-box">
-      <h3>Participantes</h3>
-      <span id="participantes"></span>
-    </div>
-    <div class="image-box">
-      <!-- Sube tu imagen como fiesta.jpg en la misma carpeta -->
-      <img src="fiesta.jpg" alt="Imagen de la fiesta">
-    </div>
-  </div>
+  <section class="countdown-container">
+    <div class="countdown" id="countdown">Cargando tiempo...</div>
+    <div class="participants">Participantes confirmados: <span id="participants">0</span></div>
+  </section>
 
-  <div class="description">
+  <section class="description-container">
     <div class="description-text">
-      <h3>Sobre la fiesta</h3>
       <p>
-        Hace cinco años comenzamos este camino juntos, compartiendo aulas, exámenes y mil historias. Hoy, en nuestro último tramo, queremos despedir esta etapa con algo que vaya más allá de una simple fiesta.  
-        <br><br>
-        <strong>The Last Jodaween</strong> es nuestro regalo y nuestro legado: una noche para disfrazarnos, reírnos de todo y competir por el trofeo del mejor disfraz.  
-        <br><br>
-        Porque más que compañeros somos una comunidad; y aunque esta fiesta nace de nuestro curso, abrimos las puertas para que otros años se sumen, compartan y sigan alimentando este espíritu.  
-        <br><br>
-        Ven con tu mejor disfraz, sé parte de esta historia y deja tu huella en la noche más épica de la U.
+        En lo alto de nuestros años universitarios, entre risas, desvelos y exámenes, nació una tradición que hoy llega a su último acto:
+        <strong>The Last Jodaween</strong>.  
+      </p>
+      <p>
+        Esta no es solo una fiesta de disfraces. Es la memoria viva de un grupo que quiso dejar huella. Un legado que quedará en nuestra U, más allá de un salón, más allá de un semestre.
+      </p>
+      <p>
+        Hoy invitamos a todos —compañeros, amigos y demás generaciones— a ser parte de esta historia. Ven con tu mejor disfraz y disputa el trofeo de la Jodaween.  
+      </p>
+      <p>
+        Porque más que colegas, somos una familia que celebra su unidad.  
       </p>
     </div>
-    <div class="description-image">
-      <img src="disfraz.jpg" alt="Disfraces">
+    <div class="description-img">
+      <img src="fiesta.jpg" alt="Imagen fiesta">
     </div>
-  </div>
+  </section>
 
   <footer>
-    Con mucho amor <span>By cholos ❤️</span>
+    Con mucho amor By cholos ❤️
   </footer>
 
   <script>
-    // Fecha de la fiesta
-    const fechaFiesta = new Date('2025-10-01T00:00:00');
+    // Cuenta regresiva
+    const eventDate = new Date('2025-10-31T22:00:00').getTime(); // Cambia la fecha/hora del evento
+    const countdownElement = document.getElementById('countdown');
+    const participantsElement = document.getElementById('participants');
 
-    function actualizarDias() {
-      const hoy = new Date();
-      const diff = fechaFiesta - hoy;
-      const dias = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
-      document.getElementById('dias').textContent = dias;
-    }
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
 
-    async function actualizarParticipantes() {
-      try {
-        // Aquí pega tu URL del Web App de Google Apps Script
-        const response = await fetch('https://script.google.com/macros/s/AKfycby2hXWedcbv0d1Lds0JIefrtP0P702KM4XePP_0eK6fTYZRf-qasSKLjzgoMMFfXkUs/exec');
-        const data = await response.json();
-        document.getElementById('participantes').textContent = data.count || 0;
-      } catch (error) {
-        document.getElementById('participantes').textContent = '0';
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      if (distance < 0) {
+        countdownElement.innerHTML = "¡El evento ha comenzado!";
       }
     }
 
-    actualizarDias();
-    actualizarParticipantes();
-    // Actualizar cada 1 minuto
-    setInterval(() => {
-      actualizarDias();
-      actualizarParticipantes();
-    }, 60000);
+    setInterval(updateCountdown, 1000);
+
+    // Participantes confirmados desde Google Apps Script
+    async function fetchParticipants() {
+      try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycby2hXWedcbv0d1Lds0JIefrtP0P702KM4XePP_0eK6fTYZRf-qasSKLjzgoMMFfXkUs/exec');
+        const data = await response.json();
+        participantsElement.textContent = data.participantes || data.count || 0;
+      } catch (error) {
+        console.error('Error al obtener participantes:', error);
+        participantsElement.textContent = '—';
+      }
+    }
+
+    fetchParticipants();
+    setInterval(fetchParticipants, 60000); // Actualiza cada 1 min
   </script>
 </body>
 </html>
