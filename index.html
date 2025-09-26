@@ -194,7 +194,7 @@
     async function actualizarParticipantes() {
       try {
         // Aquí pega tu URL del Web App de Google Apps Script
-        const response = await fetch('https://script.google.com/macros/s/TU_URL_AQUI/exec');
+        const response = await fetch('https://script.google.com/macros/s/AKfycby2hXWedcbv0d1Lds0JIefrtP0P702KM4XePP_0eK6fTYZRf-qasSKLjzgoMMFfXkUs/exec');
         const data = await response.json();
         document.getElementById('participantes').textContent = data.count || 0;
       } catch (error) {
